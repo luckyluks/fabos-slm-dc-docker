@@ -1,0 +1,8 @@
+---
+- name: Include CentOS Install Tasks
+  include_tasks: dist-specific/centos_install.yml
+  when: ansible_distribution == 'CentOS'
+
+- name: Include Ubuntu Install Tasks
+  include_tasks: dist-specific/ubuntu_install.yml
+  when: ansible_distribution == 'Ubuntu'

@@ -1,0 +1,27 @@
+---
+- name: "Create inventory with target host(s)"
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: "Check required variables"
+      assert:
+        that: "{{ item.name }} is defined"
+        fail_msg: "Missing variable '{{ item.name }}': {{ item.description }}"
+      with_items:
+        - { name: "resource_id",            description: "Id of the resource where the service should be deployed." }
+        - { name: "service_id",             description: "Id of the service instance that will be deployed." }
+        - { name: "docker_compose_file",    description: "Content of Docker Compose file." }
+
+    - include_role:
+        name: inventory_helper
+
+- name: Deploy container on docker host
+  hosts: target_hosts
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: "Include use - install"
+      include_role:
+        name: "use"
+        tasks_from: deploy.yml
