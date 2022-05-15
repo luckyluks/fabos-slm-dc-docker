@@ -6,3 +6,9 @@
 - name: Include Ubuntu Uninstall Tasks
   include_tasks: dist-specific/ubuntu_uninstall.yml
   when: ansible_distribution == 'Ubuntu'
+
+- name: Include Raspbian Uninstall Tasks
+  include_tasks: dist-specific/raspbian_uninstall.yml
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_lsb.id == 'Raspbian'

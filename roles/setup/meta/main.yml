@@ -21,5 +21,8 @@ galaxy_info:
       - 20.04
       - 21.10
       - 22.04
+    - name: Raspbian
+      versions:
+      - 10 (Buster)
 
   galaxy_tags: [docker, docker-compose, install, uninstall]

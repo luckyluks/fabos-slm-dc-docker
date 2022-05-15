@@ -1,7 +1,7 @@
 Ansible Role: fabos.docker.setup
 =========
 
-The role provides task files for installing and uninstalling of docker on target host hosts.
+The role provides task files for installing and uninstalling of docker on target hosts.
 
 Requirements
 ------------

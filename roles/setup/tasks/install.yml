@@ -6,3 +6,9 @@
 - name: Include Ubuntu Install Tasks
   include_tasks: dist-specific/ubuntu_install.yml
   when: ansible_distribution == 'Ubuntu'
+
+- name: Include Raspbian Install Tasks
+  include_tasks: dist-specific/raspbian_install.yml
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_lsb.id == 'Raspbian'
